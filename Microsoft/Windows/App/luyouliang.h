@@ -1,6 +1,6 @@
 #pragma once
 
-int FirstTask(void *pParam);
+void FirstTask(void *pParam);
 void E2_task1(void *pParam);
 void E2_task2(void *pParam);
 void E3_task0(void *pParam);

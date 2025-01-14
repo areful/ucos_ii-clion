@@ -19,7 +19,7 @@ OS_EVENT  *MyEventSem;
 int a, b, c;
 char * buffer;
 /*实验使用的代码1*/
-int FirstTask(void *pParam)
+void FirstTask(void *pParam)
 {
 	int i, j = 0;
 	int abc = 123;
@@ -30,12 +30,12 @@ int FirstTask(void *pParam)
 
 	for (;;)
 	{
-		for (i = 0; i<99999999; i++);
-		//OSTimeDly(100);
+//		for (i = 0; i<99999999; i++);
+		OSTimeDly(100);
 		printf("任务延时，j=%d\n", j++);
 	}
-	return(0);
 }
+
 /*实验使用的代码2*/
 void E2_task1(void *pParam)
 {
@@ -172,7 +172,7 @@ void UsrCouPri()
 	int crt;
 	crt = 0;
 	for (;;) {
-		//	sum=add2(100,200);	
+		//	sum=add2(100,200);
 
 	}
 }
@@ -312,7 +312,7 @@ void TaskDataProcess(void *pParam)
 	/*省略了检查是否创建成功*/
 	while (1)
 	{
-		printf("时间:%d，任务TaskDataProcess开始请求事件标志-----------！\n", OSTimeGet());
+		printf("时间:%d，任务TaskDataProcess开始请求事件标志--------------------------------------------\n", OSTimeGet());
 		retflag = OSFlagPend(pFlagGroupDataProcess,
 			processflag,
 			OS_FLAG_WAIT_SET_ALL + OS_FLAG_CONSUME,
@@ -322,12 +322,12 @@ void TaskDataProcess(void *pParam)
 		if (retflag == processflag)
 		{
 			SUM = 0;
-			printf("时间:%d，任务TaskDataProcess请求事件标志成功，开始处理数据！\n", OSTimeGet());
+			printf("时间:%d，任务TaskDataProcess请求事件标志成功，开始处理数据\n", OSTimeGet());
 			for (i = 0; i<10; i++)
 			{
 				SUM += IO[0][i] + IO[1][i] + IO[2][i] + IO[3][i];
 			}
-			printf("时间:%d，任务TaskDataProcess处理数据完成，结果为%d:\n", OSTimeGet(), SUM);
+			printf("时间:%d，任务TaskDataProcess处理数据完成，结果为:%d\n", OSTimeGet(), SUM);
 		}
 	}
 }
